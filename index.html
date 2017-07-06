@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title></title>
+    <link rel="stylesheet" href="css/style.css" type="text/css"/>
+    <script src="libs/jquery.min.js"></script>
+    <script src="libs/underscore-min.js"></script>
+    <script src="js/ajax.js"></script>
+</head>
+<body>
+<div class="view">
+</div>
+</body>
+<script type="text/template" id="tpl">
+    <table id="table">
+        <tr class="title">
+            <td rowspan="2">期号</td>
+            <td rowspan="2" colspan="3">开奖号码</td>
+            <td colspan="6">中奖号码分布</td>
+            <td colspan="16">和值</td>
+            <td colspan="6">跨度</td>
+        </tr>
+        <tr class="title">
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+            <td>10</td>
+            <td>11</td>
+            <td>12</td>
+            <td>13</td>
+            <td>14</td>
+            <td>15</td>
+            <td>16</td>
+            <td>17</td>
+            <td>18</td>
+            <td>0</td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+        </tr>
+        <%_.each(obj,function(e,a){%>
+        <%var misSum=a%>
+        <%misSum++%>
+        <%e.prizeBallsArray=_.sortBy(e.prizeBallsArray, function(num){ return num;})%>
+        <tr class="num">
+            <td class="issueNo">
+                <%=e.issueNo%>
+            </td>
+            <%_.each(e.prizeBallsArray,function(e){%>
+            <td class="prizeBall">
+                <span>
+                    <%=e%>
+                </span>
+            </td>
+            <%})%>
+            <%_.each(e.misNumb,function(ev,i){%>
+            <td>
+                <%var evens = _.filter(e.prizeBallsArray, function(num){ return num == ev; })%>
+                <span class="misNumb <%if(ev==i+1&&evens.length==1){%>one<%}%> <%if(ev==i+1&&evens.length==2){%>two<%}%> <%if(ev==i+1&&evens.length==3){%>three<%}%>">
+                    <%=ev%>
+                </span>
+            </td>
+            <%})%>
+            <%_.each([3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18],function(ev,i){%>
+            <td class="sumNumb">
+                <%var sum = _.reduce(e.prizeBallsArray, function(memo, num){ return memo + parseInt(num); }, 0)%>
+                <span class="<%if(sum==i+3){%>sum<%}%> <%if(sum!=i+3){%>misSum<%}%>">
+                    <%if(sum==i+3){%>
+                        <%=sum%>
+                    <%}%>
+                </span>
+            </td>
+            <%})%>
+            <%_.each([0,1,2,3,4,5],function(ev,i){%>
+            <td class="distanceNumb">
+                <%var max=_.max(e.prizeBallsArray,function(max){return max;})%>
+                <%var min=_.min(e.prizeBallsArray,function(min){return min;})%>
+                <%var distance=max-min%>
+                <span class="<%if(distance==i){%>distance<%}%>">
+                    <%if(distance==i){%>
+                        <%=distance%>
+                    <%}%>
+                </span>
+            </td>
+            <%})%>
+        <%})%>
+        </tr>
+
+    </table>
+</script>
+</html>

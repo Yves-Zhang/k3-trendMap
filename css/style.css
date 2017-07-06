@@ -1,0 +1,93 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+table {
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 8px;
+    border-collapse:collapse;
+    border:2px solid #009900;
+}
+td{
+    padding: 5px;
+    border-bottom: 1px #e46b50 solid;
+    border-right: 1px #e46b50 solid ;
+    cellpadding:0;
+    cellspacing:0;
+    text-align: center;
+}
+.lotteryNumber{
+    background-color: #a0e4d4;
+    color: #e94e61;
+    font-weight: bold;
+}
+.title{
+    background-color: #ffdd56;
+    font-weight: bold;
+    color: #464646;
+}
+.view{
+    padding: 0;
+}
+.one{
+    color: #ffffff!important;
+    background-color: red;;
+}
+.two{
+    color: #ffffff!important;
+    background-color: orange;;
+}
+.three{
+    color: #ffffff!important;
+    background-color: green;;
+}
+.issueNo{
+    font-weight: bold;
+    color: #464646;
+}
+.sumNumb{
+    background-color: #fffded;
+}
+.sumNumb,.distanceNumb{
+    color: #cccccc;
+}
+.sumNumb span,.distanceNumb span{
+    padding: 0;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 25px;
+    display: block;
+    font-weight: bold;
+    width: 25px;
+    height: 25px;
+}
+.prizeBall{
+    background-color: #b0e3ea;
+    color: red;
+    font-weight: bold;
+}
+.misNumb{
+    text-align: center;
+    line-height: 25px;
+    display: block;
+    margin: 0 auto;
+    color: #cccccc;
+    font-weight: bold;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}
+.sum{
+    color: #ffffff!important;
+    position: relative;
+    background-color: green;
+    z-index: 1;
+}
+
+.distance{
+    color: #ffffff!important;
+    position: relative;
+    background-color: orange;
+    z-index: 1;
+}
